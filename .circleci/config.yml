@@ -1,11 +1,12 @@
 version: 2.1
-workflows:
-  testing:
-    jobs:
-      - runner-test
 jobs:
-  runner-test:
-    machine: true
+  build:
+    docker:
+      - image: cimg/base:current
     resource_class: git-jira-integrations/git-jira-integrations
     steps:
-      - run: echo "Hi I'm on Runners!"
+      - run: echo "Hi I'm on a Container Runner!"
+workflows:
+  build-workflow:
+    jobs:
+      - build
